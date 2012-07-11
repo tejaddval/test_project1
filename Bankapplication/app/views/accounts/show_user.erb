@@ -1,0 +1,47 @@
+<body bgcolor="#E6E6FA">
+<div id="infoheading">  
+<h1>User information and Balance</h1></div>
+<div id="line"></div>
+<div>
+<table id="content" width="80%" >
+	<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>surame</th>
+			<th>Gender</th>
+			<th>Permanent Address</th>
+			<th>Correspondence Adress</th>
+			<th>Email</th>
+			<th>Contact</th>  
+			<th>Balance</th>
+		  <th>Image</th>       	
+              
+	</tr>
+	<tr>
+			<td><%= @user.first_name %></td>
+			<td><%= @user.middle_name %></td>
+			<td><%= @user.surname %></td>
+			<td><%= @user.gender %></td>
+			<td><%= @user.permanent_address %></td>
+			<td><%= @user.correspondence_address %></td>
+			<td><%= @user.email %></td>
+			<td><%= @user.contact_no %></td>
+			<% if !@bal.blank? %>
+      <td><%= @bal.balance %></td>
+			<%else%>
+      <td>0 <span style="font-color:red;"> You have zero balance</span></td>
+			<% end %>
+			
+			<td><%= image_tag @user.avatar.url(:thumb) %></td>		
+
+</tr>
+</table>
+</div>
+<div id="editbutton">
+<%= link_to image_tag('edit_profile_btn.png'), edit_user_path(:id => @user.id) %></div>
+<div id="logoutbutton">
+<%= link_to image_tag('logout_button.gif'), destroy_path(:user=>@user.login) %></div>
+<div id="detailbutton">
+<%= link_to image_tag('listused_details_button.png'), show_transaction_path(:id => @user.id)%></div>
+<div id="maketransaction">
+<%= link_to image_tag('back_button.gif'), accounts_path(:id => @user.id)%></div>

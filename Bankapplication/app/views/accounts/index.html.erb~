@@ -1,0 +1,45 @@
+
+<body bgcolor="#E6E6FA">
+<div id="infoheading">
+<h1>Account Information</h1></div>
+<div id="line"></div>
+<div id="addvallogo">
+<img src="images/e-banking-logo.jpg" alt="Test Image" width="225" height="105" /></div>
+
+<table id="content" width="80%" >
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>surame</th>
+    <th>Gender</th>
+    <th>Permanent Address</th>
+    <th>Correspondence Adress</th>
+    <th>Email</th>
+    <th>Contact</th>
+		<th>Balance</th>
+ </tr>
+
+<tr>
+			<td><%= @user.first_name %></td>
+			<td><%= @user.middle_name %></td>
+			<td><%= @user.surname %></td>
+			<td><%= @user.gender %></td>
+			<td><%= @user.permanent_address %></td>
+			<td><%= @user.correspondence_address %></td>
+			<td><%= @user.email %></td>
+			<td><%= @user.contact_no %></td>
+			<% if !@bal.blank? %>
+      <td><%= @bal.balance %></td>
+			<%else%>
+      <td>0 <span style="font-color:red;"> You have zero balance</span></td>
+			<% end %>
+	</tr>
+</table>
+
+<div id="editbutton">
+		 <%= link_to "Enter the amount", ent_balance_path(:user_id => @user.id) %> 
+    <%= link_to "Click here for Deposit", new_trans_path(:id => @user.id)%>
+    <%= link_to "Click here for Withdrawal", debit_amount_path(:id => @user.id)%>
+    <%= link_to "Available Balance", show_user_path(:id => @user.id)%>
+		<%= link_to "Show Transaction", show_transaction_path(:id => @user.id)%>
+</div>

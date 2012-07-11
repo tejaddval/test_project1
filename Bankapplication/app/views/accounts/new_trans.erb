@@ -1,0 +1,28 @@
+<body bgcolor="#E6E6FA">
+<div id="infoheading">
+<h1>Enter the Amount for Deposit</h1> </div>
+<div id="line"></div>
+<% form_for(@transaction,:url => {:controller => "accounts",:action => "savedebit"}) do |f| %>
+
+  <%= f.error_messages %>
+ <div id="balancedropdwn"> 
+<p>
+    Account No<br />
+    
+<%= select("transaction", "account_no", Transaction.find_by_sql("select distinct account_no from transactions").collect {|p| [  p.account_no, p.account_no ] }, {:include_blank => true}, :style=>'width:210px',  :class=>'editinput' )%>
+  
+  </p>
+
+ <p>
+    <%= f.label :Deposit %><br />
+    <%= f.text_field :credit %>
+  </p>
+
+     <%= hidden_field(:user,:userinfo_id, :value => params[:id] )%>
+ 
+ <p>
+    <%= f.submit 'Create' %>
+  </p></div>
+<% end %>
+<div id="balanceBack">
+<%= link_to image_tag('back_button.gif'), show_user_path(:id => current_user) %></div>

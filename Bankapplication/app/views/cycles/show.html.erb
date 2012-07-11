@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @cycle.name %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @cycle.height %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @cycle.price %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @cycle.location %>
+</p>
+
+
+<%= link_to 'Edit', edit_cycle_path(@cycle) %> |
+<%= link_to 'Back', cycles_path %>

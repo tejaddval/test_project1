@@ -1,0 +1,5 @@
+#content{
+	position:absolute;
+	top:175px;
+	left:175px;
+}

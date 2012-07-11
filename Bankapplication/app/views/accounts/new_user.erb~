@@ -1,0 +1,172 @@
+<body bgcolor="#E6E6FA">
+<div id="line"></div>
+
+<script type="text/javascript">
+function validate()
+{
+		var myLogin = document.getElementById('loginname').value;		
+		var myFirstName = document.getElementById('firstName').value;
+		var myMiddleName = document.getElementById('middleName').value;
+		var lastName = document.getElementById('lastName').value;
+		var myPassword = document.getElementById('passwordField').value;
+		var myPasswordconf = document.getElementById('passwordFieldconf').value;
+		var e = document.getElementById("user_gender");
+		var myparmanentAdd = document.getElementById('parmanentAddress').value;
+    var mycorresAdd = document.getElementById('corresAddress').value;
+		var myeMail = document.getElementById('eMail').value;
+		var myContactNo = document.getElementById('ContactNo').value;
+    
+		var userRegex ="^[a-z0-9_-]{3,15}$";
+		var fnameRegex = "^[a-zA-Z]+$";
+		var contacrRegex = "^([1-9]{1})([0-9]{9})$";
+		var regex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+
+     if(myLogin == ""){
+     	alert( "Please provide Your User name!" );
+		 }
+     
+			else if(myLogin.match(userRegex) == null){
+				alert("please provide Your Valid User Name.");
+			}
+
+			else if(myFirstName == ""){
+     	alert( "Please provide Your First name!" );
+		 }
+			
+			else if(myFirstName.match(fnameRegex) == null){
+				alert("please provide Your Valid First Name.");
+			}
+			
+			else if(myMiddleName == ""){
+			alert( "Please provide Your Middle name!" );
+			}
+
+ 			else if(myMiddleName.match(fnameRegex) == null){
+				alert("please provide Your Valid Middle Name.");
+			}
+			
+			else if(lastName == ""){
+			alert( "Please provide Your Sur name!" );
+			}	
+
+			else if(myPassword == ""){
+			alert( "Please Enter your Password!" );
+			}	
+
+			else if(myPasswordconf == ""){
+			alert( "Please Enter conform your password!" );
+			}	
+
+			else if(myPassword != myPasswordconf){
+			alert( "Both Password Should match" );
+			}	
+			
+
+			else if(lastName.match(fnameRegex) == null){
+				alert("please provide Your Valid Last Name.");
+			}	
+			
+			else if(e.value == ""){
+		  var selectGender = e.options[e.selectedIndex].value;
+			alert("Please Select Gender!");
+			}
+     
+			else if(myparmanentAdd == ""){
+			alert("Please provide Your Permanent  Address!");
+			}
+			
+			
+			else if(mycorresAdd == ""){
+			alert("Please provide your correspondence Address!");
+			}
+
+			
+			else if(myeMail == ""){
+			alert("Please provide your Email!");
+			}
+			else if(myeMail.match(regex) == null){
+				alert("please provide correct email.");
+			}
+			
+			else if(myContactNo == ""){
+			alert("Please provide your Contact No!");
+			}
+   		else if(myContactNo.match(contacrRegex) == null){
+				alert("please provide Your Valid Contact No.");
+			}			
+			
+			else			
+			document.getElementById("new_user_form").submit();
+	return false;
+}
+</script>
+	<div id="infoheading">
+		<h1>New User Registration</h1></div>
+	<% form_for(@user,:url => {:controller => "accounts",:action => "save"},:html=>{:multipart => true,:id=>"new_user_form"}) do |f| %>
+  <%= f.error_messages %>
+	<div id="newuserid">
+
+	<p>
+    User Name<br />
+    <%= f.text_field :login,:id => "loginname" %>
+  </p>  
+
+	<p>
+    First Name<br />
+    <%= f.text_field :first_name,:id => "firstName" %>
+  </p>
+  
+	<p>
+    Middle Name<br />
+    <%= f.text_field :middle_name,:id => "middleName" %>
+  </p>
+  
+	<p>
+   Surname <br />
+    <%= f.text_field :surname,:id => "lastName" %>
+  </p>
+
+	<p>
+   password <br />
+   <%= f.password_field :password,:id => "passwordField" %>
+  </p>	
+
+	<p>
+   Password Confirmation <br />
+    <%= f.password_field :password_confirmation,:id => "passwordFieldconf" %>
+  </p>
+
+	<p>
+   Gender  
+   <%= f.select(:gender, [['Male', 'Male'], ['Female', 'Female']],{:include_blank => true})%>
+  </p>
+ 
+	 <p>
+    Permanent Address <br />
+    <%= f.text_field :permanent_address,:id => "parmanentAddress" %>
+  </p>
+ 	
+	 <p>
+   Correspondence Address <br />
+    <%= f.text_field :correspondence_address, :id => "corresAddress" %>
+  </p>
+
+	  <p>
+    <%= f.label :Email %><br />
+    <%= f.text_field :email, :id => "eMail" %>
+	  </p>
+
+	  <p>
+    Contact No<br />
+    <%= f.text_field :contact_no, :id => "ContactNo" %>
+  </p>
+  <p>
+		 File Upload<br />
+   <%= f.file_field :avatar %>
+	</p>
+		<input type="button" onclick="validate()" value="Submit"/></div>
+   <% end %>
+
+
+
+

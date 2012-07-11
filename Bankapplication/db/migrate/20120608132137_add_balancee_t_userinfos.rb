@@ -1,0 +1,9 @@
+class AddBalanceeTUserinfos < ActiveRecord::Migration
+  def self.up
+	add_column :userinfos, :balance, :float
+  end
+
+  def self.down
+	remove_column :userinfos, :balance
+  end
+end

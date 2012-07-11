@@ -1,0 +1,26 @@
+<body bgcolor="#E6E6FA">
+<div id="infoheading">
+<h1>Enter The Amount</h1></div>
+<div id="line"></div>
+<% form_for(@transaction,:url => {:controller => "accounts",:action => "savedebit"}) do |f| %>
+
+  <%= f.error_messages %>
+    
+<div id="balancedropdwn">
+<p>
+    Account No<br />
+    
+<%= select("transaction", "account_no", Useraccount.find_by_sql("select account_no from useraccounts where user_id  = #{params[:user_id]}").collect {|p| [ p.account_no, p.account_no ] }, {:include_blank => true},  :style=>'width:210px',  :class=>'editinput' )%>
+ </p>
+
+ <p>
+    <%= f.label :Balance %><br />
+    <%= f.text_field :balance %>
+  </p>
+ 
+ <p>
+    <%= f.submit 'Create' %>
+  </p></div>
+<% end %>
+<div id="balanceBack">
+<%= link_to image_tag('back_button.gif'), show_user_path(:id => current_user) %></div>

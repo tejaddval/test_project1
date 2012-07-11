@@ -1,0 +1,43 @@
+<h1>Editing user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  
+    First Name<br />
+    <%= f.text_field :first_name,:id => "firstName" %>
+  </p>
+  <p>
+    Middle Name<br />
+    <%= f.text_field :middle_name,:id => "middleName" %>
+  </p>
+  <p>
+   Surname <br />
+    <%= f.text_field :surname,:id => "lastName" %>
+  </p>
+
+  <p>
+   Gender  
+   <%= f.select(:gender, [['Male', 'Male'], ['Female', 'Female']],{:include_blank => true})%>
+  </p>
+  <p>
+    Permanent Address <br />
+    <%= f.text_field :permanent_address,:id => "parmanentAddress" %>
+  </p>
+  <p>
+   Correspondence Address <br />
+    <%= f.text_field :correspondence_address, :id => "corresAddress" %>
+  </p>
+  <p>
+    <%= f.label :Email %><br />
+    <%= f.text_field :email, :id => "eMail" %>
+  </p>
+  <p>
+    Contact No<br />
+    <%= f.text_field :contact_no, :id => "ContactNo" %>
+  </p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+

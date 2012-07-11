@@ -1,0 +1,26 @@
+<h1>Listing cycles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Height</th>
+    <th>Price</th>
+    <th>Location</th>
+  </tr>
+
+<% @cycles.each do |cycle| %>
+  <tr>
+    <td><%=h cycle.name %></td>
+    <td><%=h cycle.height %></td>
+    <td><%=h cycle.price %></td>
+    <td><%=h cycle.location %></td>
+    <td><%= link_to 'Show', cycle %></td>
+    <td><%= link_to 'Edit', edit_cycle_path(cycle) %></td>
+    <td><%= link_to 'Destroy', cycle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cycle', new_cycle_path %>

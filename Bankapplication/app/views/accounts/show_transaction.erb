@@ -1,0 +1,27 @@
+<body bgcolor="#E6E6FA">
+<div id="infoheading">  
+<h1>Transactions Details</h1></div>
+<div id="line"></div>
+<table id="content" width="80%" >
+	<tr>
+			<th>Account NO</th>
+			<th>Debit</th>
+			<th>Credit</th>
+			<th>Balance</th>
+			
+ 	</tr>
+	
+<% @transaction.each do |transaction| %>
+
+	<tr>
+			<td><%= transaction.account_no %></td>
+			<td><%= transaction.debit %></td>
+			<td><%= transaction.credit %></td>
+			<td><%= transaction.balance %></td>
+	</tr>
+<% end %>
+</table>
+</div>
+<div id="balanceBack">
+<%= link_to image_tag('back_button.gif'), show_user_path(:id => current_user) %>
+</div>
